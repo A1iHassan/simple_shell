@@ -8,8 +8,8 @@
  */
 char *_strcat(char *s1, char *s2)
 {
-	char *a;
-	int i, j;
+	char *a = NULL;
+	int i = 0, j = 0;
 	int k = 0;
 
 	if (s1 == NULL)

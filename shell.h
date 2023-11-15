@@ -6,14 +6,15 @@
 #include<unistd.h>
 #include<errno.h>
 #include <sys/wait.h>
+#include <string.h>
 
 void execute_command(const char *command);
 char *execute(char *command);
-int execmd(char **argv);
+int execmd(char **argv, char **env, int proc);
 char *get_oldpwd();
 void _print(char *user_input);
 char *_strcpy(char *dest, char *src);
-size_t _strlen(const char *s);
+int _strlen(const char *s);
 char *_strdup(const char *str);
 void _exit_(void);
 unsigned int _strspn(char *s, char *accept);
@@ -35,4 +36,5 @@ void _cd(void);
 size_t _strlen_(char **s);
 char *_hash(char *line);
 void _free(char **grid, int height);
+char **token(char *line);
 #endif

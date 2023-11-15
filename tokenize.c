@@ -43,7 +43,7 @@ int count(char *line)
  */
 char **tokenize(char *line)
 {
-	int  i = 0, j = 0, k, l = count(line);
+	int  i = 0, j = 0, k = 0, l = count(line);
 	char *holder = line;
 	char **arr = malloc(sizeof(char *) *(l));
 
@@ -73,15 +73,11 @@ char **tokenize(char *line)
 			}
 			for (k = 0; k < i; k++)
 			{
-				arr[j][k] = *(holder - i + k);
-			}
+				arr[j][k] = *(holder - i + k); }
 			arr[j][k] = '\0';
 			j++;
-			i = 0;
-		}
-			holder++;
-	}
-
+			i = 0; }
+			holder++; }
 	arr[j] = NULL;
 	return (arr);
 }

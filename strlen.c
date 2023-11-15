@@ -6,9 +6,9 @@
  * Return: bla
  */
 
-size_t _strlen(const char *s)
+int _strlen(const char *s)
 {
-	size_t i = 0;
+	int i = 0;
 
 	while (*s != '\0')
 	{
