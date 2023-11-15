@@ -23,7 +23,7 @@ int main(int argc, char **argv, char **envp)
 
 	while (1)
 	{
-start:
+
 		if (isatty(0))
 		{
 			_print("$ ");
@@ -36,11 +36,11 @@ start:
 				_print("\n"); }
 			break; }
 		if (count(line) == 0)
-			goto start;
+			continue;
 		line[_strlen(line) - 1] = '\0';
 		_print("");
 		if (built_in(line) == 1)
-			goto start;
+			continue;
 		}
 
 	free(line);
