@@ -24,12 +24,18 @@ int execmd(char **argv)
 					write(2, "./hsh: 1: ", 10);
 					write(2, command, strlen(command));
 					write(2, ": not found\n", 12);
+<<<<<<< HEAD
 			/**		free(cmd);
 					// _free(argv, _strlen_(argv));
 					// exit(127);*/
 					return (127);
+=======
+		/**			free(cmd);
+				 	_free(argv, _strlen_(argv));
+					exit(127);*/
+>>>>>>> 7eea9adc676d629ac8f99b1776413809c7ee8bd7
 				}
-			free(cmd);
+			/*free(cmd);*/
 			}
 		}
 		else if (process < 0)
@@ -40,8 +46,8 @@ int execmd(char **argv)
 /*			// exit(EXIT_FAILURE);*/
 			return (1);
 		}
-/*		// free(cmd);
-		// _free(argv, _strlen_(argv));*/
+	/*/ free(cmd);*/
+/*	_free(argv, _strlen_(argv));*/
 		wait(&pr);
 	}
 	else
@@ -49,7 +55,7 @@ int execmd(char **argv)
 		write(2, "./hsh: 1: ", 10);
 		write(2, command, strlen(command));
 		write(2, ": not found\n", 12);
-		free(cmd);
+/*		free(cmd);*/
 /**		// free(cmd);
 		// _free(argv, _strlen_(argv));
 		// exit(127);*/
