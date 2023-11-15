@@ -10,7 +10,7 @@
 
 void execute_command(const char *command);
 char *execute(char *command);
-void execmd(char **argv);
+int execmd(char **argv);
 char *get_oldpwd();
 void _print(char *user_input);
 char *_strcpy(char *dest, char *src);

@@ -14,7 +14,7 @@ int main(int argc, char **argv, char **envp)
 	size_t n = 0;
 	ssize_t charac;
 	/*int i = 0;*/
-	int arr_count = 0;
+	int arr_count = 0, status = 0;
 	char **a = NULL;
 	(void)argc;
 	(void)argv;
@@ -45,9 +45,9 @@ start:
 			a = tokenize(line);
 			arr_count = _strlen_(a);
 			
-			execmd(a);
+			status = execmd(a);
 			_free(a, arr_count);
 			}
 		}
 	free(line);
-	return (0); }
+	return (status); }
