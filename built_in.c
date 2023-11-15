@@ -13,7 +13,7 @@ int built_in(char *line)
 {
 	char **a;
 	int count = 0;
-	char *previous_dir = get_oldpwd();
+	char *prev_dir = getenv("OLDPWD");
 	char *dir = getenv("HOME");
 	 int exit_status;
 	char *text = "./hsh: 1: cd: can't cd to ";
@@ -68,13 +68,13 @@ int built_in(char *line)
 			return (1); }
 		else if (count == 2 && strcmp(a[1], "-") == 0)
 		{
-			if (dir_exists(previous_dir))
+			if (dir_exists(dir))
 			{
-				chdir(previous_dir);
+				chdir(prev_dir);
 				_cd();
-				free(previous_dir);
+				free(prev_dir);
 				_free(a, _strlen_(a));
-				free(previous_dir);
+				free(prev_dir);
 				return (1);
 			} else
 			{

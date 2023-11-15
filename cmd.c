@@ -28,7 +28,7 @@ void execmd(char **argv)
 					// _free(argv, _strlen_(argv));
 					// exit(127);*/
 				}
-		/*		// free(cmd);*/
+		 free(cmd);
 			}
 		}
 		else if (process < 0)
@@ -38,8 +38,8 @@ void execmd(char **argv)
 			perror("FORK FAILED");
 /*			// exit(EXIT_FAILURE);*/
 		}
-/*		// free(cmd);
-		// _free(argv, _strlen_(argv));*/
+		 free(cmd);
+		/*/ _free(argv, _strlen_(argv));*/
 		wait(&pr);
 	}
 	else
