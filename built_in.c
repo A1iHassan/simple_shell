@@ -105,13 +105,14 @@ int built_in(char *line)
 		else if (strcmp(a[0], "setenv") == 0)
 		{
 			handle_set(a);
-			_free(a, _strlen_(a));
+			free(a);
 			return (1); }
 		else if (strcmp(a[0], "unsetenv") == 0)
 		{
 			handel_unset(a);
-			_free(a, _strlen_(a));
+		_free(a, _strlen_(a));	
 			return (1); }
+	
 			_free(a, _strlen_(a));
 			return (0);
 		}
