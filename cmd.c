@@ -24,22 +24,22 @@ void execmd(char **argv)
 					write(2, "./hsh: 1: ", 10);
 					write(2, command, strlen(command));
 					write(2, ": not found\n", 12);
-					// free(cmd);
+				/**	// free(cmd);
 					// _free(argv, _strlen_(argv));
-					// exit(127);
+					// exit(127);*/
 				}
-				// free(cmd);
+		/*		// free(cmd);*/
 			}
 		}
 		else if (process < 0)
 		{
-			// free(cmd);
-			// _free(argv, _strlen_(argv));
+		/*	// free(cmd);
+			// _free(argv, _strlen_(argv));*/
 			perror("FORK FAILED");
-			// exit(EXIT_FAILURE);
+/*			// exit(EXIT_FAILURE);*/
 		}
-		// free(cmd);
-		// _free(argv, _strlen_(argv));
+/*		// free(cmd);
+		// _free(argv, _strlen_(argv));*/
 		wait(&pr);
 	}
 	else
@@ -47,9 +47,9 @@ void execmd(char **argv)
 		write(2, "./hsh: 1: ", 10);
 		write(2, command, strlen(command));
 		write(2, ": not found\n", 12);
-		// free(cmd);
+/**		// free(cmd);
 		// _free(argv, _strlen_(argv));
-		// exit(127);
+		// exit(127);*/
 	}
 
 

@@ -12,15 +12,14 @@ int dir_exists(const char *path);
 int built_in(char *line)
 {
 	char **a;
-	int i = 0;
 	int count = 0;
 	char *previous_dir = get_oldpwd();
 	char *dir = getenv("HOME");
-	char *pwd = getenv("PWD");
+	 int exit_status;
 	char *text = "./hsh: 1: cd: can't cd to ";
+
 	a = tokenize(line);
 	count = _strlen_(a);
-	int exit_status;
 
 	if (_strcmp(a[0], "exit") == 0)
 	{
@@ -114,7 +113,8 @@ int built_in(char *line)
 			_free(a, _strlen_(a));
 			return (1); }
 			_free(a, _strlen_(a));
-		}
+		return (0);
+}
 	/**
 	 * dir_exists - check if dirctory is exeists
 	 * @path: the path

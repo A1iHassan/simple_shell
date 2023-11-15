@@ -13,9 +13,12 @@ int main(int argc, char **argv, char **envp)
 	char *line = NULL;
 	size_t n = 0;
 	ssize_t charac;
-	int i = 0, arr_count = 0;
+	int i = 0;
+/*	int arr_count = 0;*/
 	char **a = NULL;
-	(void)argc, argv, envp;
+	(void)argc;
+	(void)argv;
+	(void)envp;
 
 	while (1)
 	{
@@ -40,7 +43,7 @@ start:
 		else
 		{
 			a = tokenize(line);
-			arr_count = _strlen_(a);
+/*     			arr_count = _strlen_(a);*/
 			
 			execmd(a);
 			while (a[i])
