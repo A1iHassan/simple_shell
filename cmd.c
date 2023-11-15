@@ -22,13 +22,13 @@ void execmd(char **argv)
 				{
 					perror("execve");
 					write(2, "./hsh: 1: ", 10);
-					write(2, command, strlen(command));
+					write(2, command, _strlen(command));
 					write(2, ": not found\n", 12);
 		/**			free(cmd);
 				 	_free(argv, _strlen_(argv));
 					exit(127);*/
 				}
-			/*free(cmd);*/
+	/**		free(cmd);*/
 			}
 		}
 		else if (process < 0)
@@ -39,13 +39,13 @@ void execmd(char **argv)
 /*			// exit(EXIT_FAILURE);*/
 		}
 	/*/ free(cmd);*/
-/*	_free(argv, _strlen_(argv));*/
+/**	_free(argv, _strlen_(argv));*/
 		wait(&pr);
 	}
 	else
 	{
 		write(2, "./hsh: 1: ", 10);
-		write(2, command, strlen(command));
+		write(2, command, _strlen(command));
 		write(2, ": not found\n", 12);
 /*		free(cmd);*/
 /**		// free(cmd);

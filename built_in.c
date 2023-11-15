@@ -2,7 +2,6 @@
 #include<unistd.h>
 #include <sys/stat.h>
 
-int dir_exists(const char *path);
 /**
  * built_in - checks for built in commands to be executed
  * @line: give input string
@@ -11,7 +10,7 @@ int dir_exists(const char *path);
 
 int built_in(char *line)
 {
-	char **a;
+	char **a = NULL;
 	int i = 0;
 	int count = 0;
 	char *previous_dir = getenv("OLDPWD");
@@ -36,7 +35,7 @@ int built_in(char *line)
 			{ 
 				write(STDERR_FILENO, "./hsh: 1: exit: ", 16);
 				write(STDERR_FILENO, "Illegal number: ", 16);
-				write(STDERR_FILENO, a[1], strlen(a[1]));
+				write(STDERR_FILENO, a[1], _strlen(a[1]));
 				write(2, "\n", 1);
 				free(line);
 				_free(a, _strlen_(a));
@@ -68,62 +67,47 @@ int built_in(char *line)
 			_cd();
 			_free(a, _strlen_(a));
 			return (1); }
-		else if (count == 2 && strcmp(a[1], "-") == 0)
+		else if (count == 2 && _strcmp(a[1], "-") == 0)
 		{
-			if (dir_exists(dir))
+			chdir(dir);
+			_cd();
+			_free(a, _strlen_(a));
+			return (1);
+		} else if (count == 2)
+			if (chdir(a[1]) == 0)
 			{
-				chdir(dir);
 				_cd();
 				_free(a, _strlen_(a));
 				return (1);
 			} else
 			{
-				write(STDERR_FILENO, text, strlen(text)); } }
-		else if (count == 2)
-		{
-			if (dir_exists(a[1]))
-			{
-				if (chdir(a[1]) == 0)
-				{
-					_cd();
-					_free(a, _strlen_(a));
-					return (1);
-				} else
-				{
-					write(2, text, strlen(text));
-					write(2, a[1], strlen(a[1]));
-					write(2, "\n", 1);
-					_free(a, _strlen_(a)); 
-					return (1); } }
+				write(2, text, _strlen(text));
+				write(2, a[1], _strlen(a[1]));
+				write(2, "\n", 1);
+				_free(a, _strlen_(a)); 
+				return (1); }
 			else 
 			{
-				write(2, text, strlen(text));
-				write(2, a[1], strlen(a[1]));
+				write(2, text, _strlen(text));
+				write(2, a[1], _strlen(a[1]));
 				write(2, "\n", 1);
 				_free(a, _strlen_(a));
-				return (1); } }}
-		else if (strcmp(a[0], "setenv") == 0)
-		{
-			handle_set(a);
-			free(a);
-			return (1); }
-		else if (strcmp(a[0], "unsetenv") == 0)
-		{
-			handel_unset(a);
+				return (1); } }
+	else if (_strcmp(a[0], "setenv") == 0)
+	{
+		handle_set(a);
+		free(a);
+		return (1); }
+	else if (_strcmp(a[0], "unsetenv") == 0)
+	{
+		handel_unset(a);
 		_free(a, _strlen_(a));	
-			return (1); }
-	
-			_free(a, _strlen_(a));
-			return (0);
-		}
-	/**
-	 * dir_exists - check if dirctory is exeists
-	 * @path: the path
-	 * Return: stat
-	 */
-int dir_exists(const char *path)
-{
-	struct stat info;
+		return (1); }
+	else
+	{	execmd(a);
+		_free(a, count);
+	}
 
-	return (stat(path, &info) == 0 && S_ISDIR(info.st_mode));
+	
+	return (0);
 }

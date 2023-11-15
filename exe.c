@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include<string.h>
 
 /**
  * execute - parses the input line to be passed to the execmd function
@@ -23,7 +24,7 @@ char *execute(char *command)
 		copy = _strdup(path);
 		token = strtok(copy, ":");
 
-		len = strlen(command);
+		len = _strlen(command);
 
 		while (token != NULL)
 		{

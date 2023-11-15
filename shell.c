@@ -15,7 +15,7 @@ int main(int argc, char **argv, char **envp)
 	ssize_t charac;
 	/*int i = 0;*/
 /*	int arr_count = 0;*/
-	char **a = NULL;
+/*	char **a = NULL;*/
 	(void)argc;
 	(void)argv;
 	(void)envp;
@@ -40,15 +40,6 @@ start:
 		_print("");
 		if (built_in(line) == 1)
 			goto start;
-		else
-		{
-			a = tokenize(line);
-/**		arr_count = _strlen_(a);*/
-			
-			execmd(a);
-		free(a);
-
-			}
 		}
 
 	free(line);
