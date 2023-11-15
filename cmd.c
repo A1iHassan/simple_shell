@@ -4,7 +4,7 @@
  * execmd - a caller function for execve
  * @argv: array of command and its argument
  */
-void execmd(char **argv)
+int execmd(char **argv)
 {
 	char *command = argv[0], *cmd = execute(command);
 	extern char **environ;
@@ -24,6 +24,10 @@ void execmd(char **argv)
 					write(2, "./hsh: 1: ", 10);
 					write(2, command, _strlen(command));
 					write(2, ": not found\n", 12);
+			/**		free(cmd);
+					// _free(argv, _strlen_(argv));
+					// exit(127);*/
+					return (127);
 		/**			free(cmd);
 				 	_free(argv, _strlen_(argv));
 					exit(127);*/
@@ -37,6 +41,7 @@ void execmd(char **argv)
 			// _free(argv, _strlen_(argv));*/
 			perror("FORK FAILED");
 /*			// exit(EXIT_FAILURE);*/
+			return (1);
 		}
 	/*/ free(cmd);*/
 /**	_free(argv, _strlen_(argv));*/
@@ -51,10 +56,9 @@ void execmd(char **argv)
 /**		// free(cmd);
 		// _free(argv, _strlen_(argv));
 		// exit(127);*/
+		return (127);
 	}
 	if (cmd != argv[0])
 		free(cmd);
-
-
-
+	return (0);
 }

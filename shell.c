@@ -14,6 +14,7 @@ int main(int argc, char **argv, char **envp)
 	size_t n = 0;
 	ssize_t charac;
 	/*int i = 0;*/
+	/*int arr_count = 0, status = 0;*/
 /*	int arr_count = 0;*/
 /*	char **a = NULL;*/
 	(void)argc;
