@@ -13,8 +13,8 @@ int main(int argc, char **argv, char **envp)
 	char *line = NULL;
 	size_t n = 0;
 	ssize_t charac;
-	int i = 0;
-/*	int arr_count = 0;*/
+	/*int i = 0;*/
+	int arr_count = 0;
 	char **a = NULL;
 	(void)argc;
 	(void)argv;
@@ -43,16 +43,10 @@ start:
 		else
 		{
 			a = tokenize(line);
-/*     			arr_count = _strlen_(a);*/
+			arr_count = _strlen_(a);
 			
 			execmd(a);
-			while (a[i])
-			{
-				free(a[i]);
-				i++; }
-			free(a[i]);
-			free(a);
-			i = 0;
+			_free(a, arr_count);
 			}
 		}
 	free(line);
