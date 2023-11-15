@@ -38,6 +38,7 @@ void execmd(char **argv)
 			perror("FORK FAILED");
 /*			// exit(EXIT_FAILURE);*/
 		}
+		free(cmd);
 /*		// free(cmd);
 		// _free(argv, _strlen_(argv));*/
 		wait(&pr);
@@ -47,6 +48,7 @@ void execmd(char **argv)
 		write(2, "./hsh: 1: ", 10);
 		write(2, command, strlen(command));
 		write(2, ": not found\n", 12);
+		free(cmd);
 /**		// free(cmd);
 		// _free(argv, _strlen_(argv));
 		// exit(127);*/
