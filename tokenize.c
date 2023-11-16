@@ -14,7 +14,7 @@ int count(char *line)
 	while (*holder2)
 	{
 		if (*holder2 != ' ' && *holder2 != '\n' &&
-				*holder2 != '\0' && *holder2 != '\t' && *holder2 != ';')
+				*holder2 != '\0' && *holder2 != '\t')
 		{
 			count2 = 1;
 			break;
@@ -25,9 +25,9 @@ int count(char *line)
 		return (0);
 	while (*holder)
 	{
-		if ((*holder == ' ' || *holder == '\n' || *holder == '\t' || *holder == ';') &&
+		if ((*holder == ' ' || *holder == '\n' || *holder == '\t') &&
 				(*(holder + 1) != ' ' && *(holder + 1) != '\n' &&
-				 *(holder + 1) != '\0' && *(holder + 1) != '\t' && *(holder + 1) != ';'))
+				 *(holder + 1) != '\0' && *(holder + 1) != '\t'))
 		{
 			count++;
 		}
@@ -49,12 +49,12 @@ char **tokenize(char *line)
 
 	if (!arr)
 	{
-		free(arr);
+/*		free(arr);*/
 		exit(-1); }
 	while (*holder)
 	{
 		while ((*(holder) != ' ' && *(holder) != '\n' &&
-					*(holder) != '\0' && *(holder) != '\t' && *(holder) != ';'))
+					*(holder) != '\0' && *(holder) != '\t'))
 		{
 			i++;
 			holder++;

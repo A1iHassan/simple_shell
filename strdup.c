@@ -27,5 +27,6 @@ char *_strdup(const char *str)
 		i++;
 		str++;
 	}
+	a[i] = '\0';
 	return (a);
 }

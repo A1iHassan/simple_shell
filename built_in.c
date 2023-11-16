@@ -8,7 +8,7 @@
  * Return: 1 sometimes
  */
 
-int built_in(char *line)
+int built_in(char *line, char **envp)
 {
 	char **a = NULL;
 	int i = 0;
@@ -54,12 +54,12 @@ int built_in(char *line)
 			return (1); 
 		}
 	}
-	else if (_strcmp(a[0], "env") == 0)
+/**	else if (_strcmp(a[0], "env") == 0)
 	{
 		_envp_();
 		_free(a, _strlen_(a));
 		return (1);
-	} else if (_strcmp(a[0], "cd") == 0)
+	}*/ else if (_strcmp(a[0], "cd") == 0)
 	{
 		if (count == 1)
 		{
@@ -96,7 +96,7 @@ int built_in(char *line)
 	else if (_strcmp(a[0], "setenv") == 0)
 	{
 		handle_set(a);
-		free(a);
+		_free(a, count);
 		return (1); }
 	else if (_strcmp(a[0], "unsetenv") == 0)
 	{
@@ -104,7 +104,7 @@ int built_in(char *line)
 		_free(a, _strlen_(a));	
 		return (1); }
 	else
-	{	execmd(a);
+	{	execmd(a, envp);
 		_free(a, count);
 	}
 
