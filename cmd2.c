@@ -1,9 +1,10 @@
 #include "shell.h"
 
-int execmd(char **argv, char **envp) {
+int execmd(char **argv) {
 	char *command = argv[0], *cmd = execute(command);
 	pid_t process;
 	int status;
+	extern char **environ;
 
 	if (cmd == NULL) {
 		write(2, "./hsh: 1: ", 10);
@@ -20,7 +21,7 @@ int execmd(char **argv, char **envp) {
 
 	if (process == 0) {
 
-			if (execve(cmd, argv, envp) == -1) {
+			if (execve(cmd, argv, environ) == -1) {
 				perror("execve");
 				free(cmd);
 				exit(EXIT_FAILURE);

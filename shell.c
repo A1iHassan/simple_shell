@@ -13,14 +13,13 @@ int main(int argc, char **argv, char **envp)
 	char *line = NULL;
 	size_t n = 0;
 	ssize_t charac;
-	extern char **environ;
 	/*int i = 0;*/
 	/*int arr_count = 0, status = 0;*/
 /*	int arr_count = 0;*/
 /*	char **a = NULL;*/
 	(void)argc;
 	(void)argv;
-	environ = envp;
+	(void)envp;
 
 	while (1)
 	{
@@ -40,7 +39,7 @@ int main(int argc, char **argv, char **envp)
 			continue;
 		line[_strlen(line) - 1] = '\0';
 		_print("");
-		if (built_in(line, envp) == 1)
+		if (built_in(line) == 1)
 			continue;
 		}
 

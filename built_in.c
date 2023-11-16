@@ -8,7 +8,7 @@
  * Return: 1 sometimes
  */
 
-int built_in(char *line, char **envp)
+int built_in(char *line)
 {
 	char **a = NULL;
 	int i = 0;
@@ -54,12 +54,12 @@ int built_in(char *line, char **envp)
 			return (1); 
 		}
 	}
-/**	else if (_strcmp(a[0], "env") == 0)
+	else if (_strcmp(a[0], "env") == 0)
 	{
 		_envp_();
 		_free(a, _strlen_(a));
 		return (1);
-	}*/ else if (_strcmp(a[0], "cd") == 0)
+	} else if (_strcmp(a[0], "cd") == 0)
 	{
 		if (count == 1)
 		{
@@ -104,7 +104,7 @@ int built_in(char *line, char **envp)
 		_free(a, _strlen_(a));	
 		return (1); }
 	else
-	{	execmd(a, envp);
+	{	execmd(a);
 		_free(a, count);
 	}
 

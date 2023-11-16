@@ -7,9 +7,10 @@
 #include<errno.h>
 #include <sys/wait.h>
 
+
 void execute_command(const char *command);
 char *execute(char *command);
-int execmd(char **argv, char **envp);
+int execmd(char **argv);
 char *get_oldpwd();
 void _print(char *user_input);
 char *_strcpy(char *dest, char *src);
@@ -19,7 +20,7 @@ void _exit_(void);
 unsigned int _strspn(char *s, char *accept);
 int _strcmp(char *s1, char *s2);
 void _envp_(void);
-int built_in(char *line, char **envp);
+int built_in(char *line);
 int is_stat(char *line);
 void cd_home(char *dir);
 void handle_set(char **args);
