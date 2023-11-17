@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * _str - converts an int to char *
+ * @a: the int
+ * Return: the final string
+*/
 char *_str(int a)
 {
   int i = 0, j;
@@ -27,16 +32,22 @@ char *_str(int a)
     return (res);
   }
 
+/**
+ * _echo - performs echo $$ and echo $?
+ * @line: the input command line
+ * @status: current process status
+ * Return: a value of int
+*/
 int _echo(char *line, int *status)
 {
   char **a = tokenize(line);
+  char *msg;
+
   if (a == NULL)
   {
     free(a);
     return (0);
   }
-  char *msg;
-
   if (_strcmp(a[0], "echo") == 0)
   {
     if (_strcmp(a[1], "$?") == 0)
