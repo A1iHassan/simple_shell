@@ -2,14 +2,13 @@
 #include<unistd.h>
 #include <sys/stat.h>
 
-int  comp_built(char *line);
 /**
  * built_in - checks for built in commands to be executed
  * @line: give input string
  * Return: 1 sometimes
  */
 
-int built_in(char *line)
+int built_in(char *line, int *status)
 {
 	char **a = NULL;
 	int count = 0;
@@ -24,7 +23,7 @@ int built_in(char *line)
 		{
 			free(line);
 			_free(a, _strlen_(a));
-			exit(0); }
+			exit(*status); }
 		else if (count == 2)
 		{
 			exit_status = atoi(a[1]);
@@ -59,7 +58,7 @@ int built_in(char *line)
  * @line: the line
  * Return: 0 or 1
  */
-int  comp_built(char *line)
+int comp_built(char *line, int *status)
 {
 	char **a = NULL;
 	int count = 0;
@@ -68,7 +67,7 @@ int  comp_built(char *line)
 
 	a = tokenize(line);
 	count = _strlen_(a);
-
+	(void)status;
 	if (_strcmp(a[0], "cd") == 0)
 	{
 		if (count == 1)
@@ -88,8 +87,7 @@ int  comp_built(char *line)
 			{
 				_cd();
 				_free(a, _strlen_(a));
-				return (1);
-			}
+				return (1); }
 			else
 			{
 				write(2, text, _strlen(text));
@@ -107,7 +105,7 @@ int  comp_built(char *line)
 * @envp: enviroment variable
 * Return: 0 or 1
 */
-int more_built(char *line, char **envp)
+int more_built(char *line, char **envp, int *status)
 {
 	char **a = NULL;
 	int count = 0;
@@ -131,7 +129,8 @@ int more_built(char *line, char **envp)
 		_free(a, _strlen_(a));
 	}
 	else
-	{       execmd(a, envp);
+	{
+		*status = execmd(a, envp);
 		_free(a, count);
 	}
 	return (0);

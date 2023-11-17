@@ -25,19 +25,15 @@ int execmd(char **argv, char **envp)
 		free(cmd);
 		return (2);
 	}
-
 	process = fork();
-
 	if (process == 0)
 	{
-
 		if (execve(cmd, argv, envp) == -1)
 		{
 			perror("execve");
 			free(cmd);
 			exit(EXIT_FAILURE);
 		}
-
 	} else if (process < 0)
 	{
 		perror("FORK FAILED");
@@ -47,5 +43,7 @@ int execmd(char **argv, char **envp)
 	if (cmd != argv[0])
 	{
 		free(cmd); }
-	return (0);
+	if (!WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	return (2);
 }

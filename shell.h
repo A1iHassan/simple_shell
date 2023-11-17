@@ -7,8 +7,8 @@
 #include<errno.h>
 #include <sys/wait.h>
 
-int more_built(char *line, char **envp);
-int  comp_built(char *line);
+int more_built(char *line, char **envp, int *status);
+int comp_built(char *line, int *status);
 void cd_old(char *dir);
 void _old(void);
 void execute_command(const char *command);
@@ -23,7 +23,7 @@ void _exit_(void);
 unsigned int _strspn(char *s, char *accept);
 int _strcmp(char *s1, char *s2);
 void _envp_(char **envp);
-int built_in(char *line);
+int built_in(char *line, int *status);
 int is_stat(char *line);
 void cd_home(char *dir);
 void handle_set(char **args);

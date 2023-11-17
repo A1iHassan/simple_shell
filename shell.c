@@ -13,9 +13,10 @@ int main(int argc, char **argv, char **envp)
 	char *line = NULL;
 	size_t n = 0;
 	ssize_t charac;
-	int i;
+	int i, status = 0, *stptr = &status;
 
-	(void)argc; (void)argv;
+	(void)argc;
+	(void)argv;
 	while (1)
 	{
 		if (isatty(0))
@@ -42,11 +43,11 @@ int main(int argc, char **argv, char **envp)
 			i++; }
 		if (_strlen(line) == 0)
 			continue;
-		if (built_in(line) == 1)
+		if (built_in(line, stptr) == 1)
 			continue;
-		if (comp_built(line) == 1)
+		if (comp_built(line, stptr) == 1)
 			continue;
-		if (more_built(line, envp) == 1)
+		if (more_built(line, envp, stptr) == 1)
 			continue; }
 	free(line);
 	return (0); }
