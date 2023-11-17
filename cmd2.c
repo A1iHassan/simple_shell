@@ -4,6 +4,7 @@
  * execmd - calls the execve function
  * @argv: arguments vector
  * @envp: enviroment variable
+ * Return: 0
 */
 
 int execmd(char **argv, char **envp)
