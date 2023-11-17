@@ -41,7 +41,7 @@ int main(int argc, char **argv, char **envp)
 				line[i] = '\0';
 				break; }
 			i++; }
-		if (_strlen(line) == 0)
+		if (_strlen(line) == 0 || _echo(line, stptr) == 1)
 			continue;
 		if (built_in(line, stptr) == 1 || comp_built(line, stptr) == 1)
 			continue;

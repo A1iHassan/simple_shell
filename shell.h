@@ -39,5 +39,5 @@ void _cd(void);
 size_t _strlen_(char **s);
 char *_hash(char *line);
 void _free(char **grid, int height);
-char *_get(char **line, size_t *n);
+int _echo(char *line, int *status);
 #endif
