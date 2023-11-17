@@ -7,13 +7,13 @@
 #include<errno.h>
 #include <sys/wait.h>
 
-int more_built(char *line);
+int more_built(char *line, char **envp);
 int  comp_built(char *line);
 void cd_old(char *dir);
 void _old(void);
 void execute_command(const char *command);
 char *execute(char *command);
-int execmd(char **argv);
+int execmd(char **argv, char **envp);
 char *get_oldpwd();
 void _print(char *user_input);
 char *_strcpy(char *dest, char *src);
@@ -22,7 +22,7 @@ char *_strdup(const char *str);
 void _exit_(void);
 unsigned int _strspn(char *s, char *accept);
 int _strcmp(char *s1, char *s2);
-void _envp_(void);
+void _envp_(char **envp);
 int built_in(char *line);
 int is_stat(char *line);
 void cd_home(char *dir);

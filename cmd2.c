@@ -1,11 +1,16 @@
 #include "shell.h"
 
-int execmd(char **argv)
+/**
+ * execmd - calls the execve function
+ * @argv: arguments vector
+ * @envp: enviroment variable
+*/
+
+int execmd(char **argv, char **envp)
 {
 	char *command = argv[0], *cmd = execute(command);
 	pid_t process;
 	int status;
-	extern char **environ;
 
 	if (cmd == NULL)
 	{
@@ -25,7 +30,7 @@ int execmd(char **argv)
 	if (process == 0)
 	{
 
-		if (execve(cmd, argv, environ) == -1)
+		if (execve(cmd, argv, envp) == -1)
 		{
 			perror("execve");
 			free(cmd);

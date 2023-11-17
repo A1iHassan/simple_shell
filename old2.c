@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * cd_old - retreives the old directory
+ * @dir: directory
+*/
+
 void cd_old(char *dir) {
 	char *old = getenv("OLDPWD");
 
