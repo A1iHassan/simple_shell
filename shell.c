@@ -13,6 +13,7 @@ int main(int argc, char **argv, char **envp)
 	char *line = NULL, *temp;
 	size_t n = 0;
 	ssize_t charac;
+	int i = 0;
 
 	(void)argc;
 	(void)argv;
@@ -33,21 +34,29 @@ int main(int argc, char **argv, char **envp)
 		if (count(line) == 0)
 			continue;
 		line[_strlen(line) - 1] = '\0';
-		temp = line;
-		while (*temp)
+		temp = malloc(sizeof(char) * _strlen(line));
+		while (line[i])
 		{
-			if (*temp == '#')
-				*temp = '\0';
-			temp++;
+			if (line[i] != '#' && line[i] != '"')
+				temp[i] = line[i];
+			else
+				{
+					temp[i] = '\0';
+					break;
+				}
+			i++;
 		}
-		_print("");
-		if (built_in(line) == 1)
-			continue;
-		if (comp_built(line) == 1)
-			continue;
-		if (more_built(line, envp) == 1)
+		if (_strlen(temp) == 0)
+		{
 			continue;
 		}
-
+		if (built_in(temp) == 1)
+			continue;
+		if (comp_built(temp) == 1)
+			continue;
+		if (more_built(temp, envp) == 1)
+			continue;
+		}
+	free(temp);
 	free(line);
 	return (0); }
