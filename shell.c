@@ -10,7 +10,7 @@
 
 int main(int argc, char **argv, char **envp)
 {
-	char *line = NULL;
+	char *line = NULL, *temp;
 	size_t n = 0;
 	ssize_t charac;
 
@@ -33,10 +33,12 @@ int main(int argc, char **argv, char **envp)
 		if (count(line) == 0)
 			continue;
 		line[_strlen(line) - 1] = '\0';
-		while (line)
+		temp = line;
+		while (*temp)
 		{
-			if (*line == '#')
-				*line = '\0';
+			if (*temp == '#')
+				*temp = '\0';
+			temp++;
 		}
 		_print("");
 		if (built_in(line) == 1)
