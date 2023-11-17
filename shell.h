@@ -7,7 +7,10 @@
 #include<errno.h>
 #include <sys/wait.h>
 
-
+int more_built(char *line);
+int  comp_built(char *line);
+void cd_old(char *dir);
+void _old(void);
 void execute_command(const char *command);
 char *execute(char *command);
 int execmd(char **argv);
