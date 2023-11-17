@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * execmd - calls the execve function
+ * @argv: arguments vector
+ * @envp: enviroment variable
+*/
+
 int execmd(char **argv, char **envp)
 {
 	char *command = argv[0], *cmd = execute(command);

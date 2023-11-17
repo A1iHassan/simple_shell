@@ -104,6 +104,7 @@ int  comp_built(char *line)
 /**
 * more_built - check if command is built in
 * @line: the line
+* @envp: enviroment variable
 * Return: 0 or 1
 */
 int more_built(char *line, char **envp)
