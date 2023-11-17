@@ -106,7 +106,7 @@ int  comp_built(char *line)
 * @line: the line
 * Return: 0 or 1
 */
-int more_built(char *line)
+int more_built(char *line, char **envp)
 {
 	char **a = NULL;
 	int count = 0;
@@ -126,11 +126,11 @@ int more_built(char *line)
 		return (1); }
 	else if (_strcmp(a[0], "env") == 0)
 	{
-		_envp_();
+		_envp_(envp);
 		_free(a, _strlen_(a));
 	}
 	else
-	{       execmd(a);
+	{       execmd(a, envp);
 		_free(a, count);
 	}
 	return (0);

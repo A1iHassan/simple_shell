@@ -19,8 +19,6 @@ int main(int argc, char **argv, char **envp)
 /*	char **a = NULL;*/
 	(void)argc;
 	(void)argv;
-	(void)envp;
-
 	while (1)
 	{
 
@@ -43,7 +41,7 @@ int main(int argc, char **argv, char **envp)
 			continue;
 		if (comp_built(line) == 1)
 			continue;
-		if (more_built(line) == 1)
+		if (more_built(line, envp) == 1)
 			continue;
 		}
 

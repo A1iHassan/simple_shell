@@ -3,12 +3,11 @@
 /**
  * _envp_ - display the enviroment variables of the current process
  */
-void _envp_(void)
+void _envp_(char **envp)
 {
-	extern char **environ;
 	char **extr;
 
-	for (extr = environ; *extr != NULL; extr++)
+	for (extr = envp; *extr != NULL; extr++)
 	{
 		_print(*extr);
 		_print("\n");
