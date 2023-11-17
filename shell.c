@@ -15,7 +15,8 @@ int main(int argc, char **argv, char **envp)
 	ssize_t charac;
 	int i;
 
-	(void)argc; (void)argv;
+	(void)argc;
+	(void)argv;
 	while (1)
 	{
 		if (isatty(0))
@@ -32,9 +33,9 @@ int main(int argc, char **argv, char **envp)
 		while (line[i])
 		{
 			if (line[i] == '#' && (line[i - 1] == '"' || line[i - 1] == ' '))
-				{
-					line[i] = '\0';
-					break; }
+			{
+				line[i] = '\0';
+				break; }
 			else if (line[i] == '\n')
 			{
 				line[i] = '\0';
