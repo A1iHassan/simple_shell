@@ -10,10 +10,10 @@
 
 int main(int argc, char **argv, char **envp)
 {
-	char *line = NULL, *temp;
+	char *line = NULL;
 	size_t n = 0;
 	ssize_t charac;
-	int i = 0;
+/*	int i = 0;*/
 
 	(void)argc; (void)argv;
 	while (1)
@@ -31,7 +31,7 @@ int main(int argc, char **argv, char **envp)
 		if (count(line) == 0)
 			continue;
 		line[_strlen(line) - 1] = '\0';
-		temp = malloc(sizeof(char) * strlen(line));
+	/**	temp = malloc(sizeof(char) * strlen(line));
 		while (line[i])
 		{
 			if (line[i] != '#' && line[i] != '"')
@@ -40,7 +40,7 @@ int main(int argc, char **argv, char **envp)
 				{
 					temp[i] = '\0';
 					break; }
-			i++; }
+			i++; }*/
 		if (_strlen(line) == 0)
 		{
 			continue;
@@ -53,6 +53,6 @@ int main(int argc, char **argv, char **envp)
 			continue; 
 
 }
-	free(temp);
+/*	free(temp);*/
 	free(line);
 	return (0); }
