@@ -50,7 +50,7 @@ int _echo(char *line, int *status)
   }
   if (_strcmp(a[0], "echo") == 0)
   {
-    if (_strcmp(a[1], "$?") == 0)
+    if (_strcmp(a[1], "\\$?") == 0)
     {
       msg = _str(*status);
       write(1, msg, _strlen(msg));
@@ -59,7 +59,7 @@ int _echo(char *line, int *status)
       _free(a, _strlen_(a));
       return (1);
     }
-    else if (_strcmp(a[1], "$$") == 0)
+    else if (_strcmp(a[1], "\\$\\$") == 0)
     {
       msg = _str(getpid());
       write(1, msg, _strlen(msg));
