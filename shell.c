@@ -41,6 +41,10 @@ int main(int argc, char **argv, char **envp)
 		_print("");
 		if (built_in(line) == 1)
 			continue;
+		if (comp_built(line) == 1)
+			continue;
+		if (more_built(line) == 1)
+			continue;
 		}
 
 	free(line);
