@@ -13,7 +13,7 @@ int main(int argc, char **argv, char **envp)
 	char *line = NULL;
 	size_t n = 0;
 	ssize_t charac;
-	int i = 0;
+	int i;
 
 	(void)argc; (void)argv;
 	while (1)
@@ -28,7 +28,8 @@ int main(int argc, char **argv, char **envp)
 			break; }
 		if (count(line) == 0)
 			continue;
-		while (1)
+		i = 0;
+		while (line[i])
 		{
 			if (line[i] == '#' && (line[i - 1] == '"' || line[i - 1] == ' '))
 				{
