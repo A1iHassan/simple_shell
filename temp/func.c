@@ -2,7 +2,8 @@
 
 int _parse(char *buff, int ln, int ft)
 {
-	char *opcode, *value;
+	char *opcode;
+	char *value;
 	const char *delim = "\n ";
 
 	if (buff == NULL)
