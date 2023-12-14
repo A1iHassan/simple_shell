@@ -37,7 +37,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t *top;
+extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
 void put_queue(stack_t **, unsigned int);
@@ -58,6 +58,8 @@ void _pchar(stack_t **, unsigned int);
 void _pstr(stack_t **, unsigned int);
 void _rotl(stack_t **, unsigned int);
 void _rotr(stack_t **, unsigned int);
+void _open(char *file);
+void _read(FILE *dn);
 int _parse(char *buff, int ln, int ft);
 void func_d(char *opcode, char *value, int ln, int ft);
 void c_func(op_func func, char *op, char *val, int ln, int ft);

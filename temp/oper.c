@@ -12,7 +12,7 @@ void _swap(stack_t **stack, unsigned int ln)
 
 	if (!stack || !*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", ln);
+		more_error(8, ln, "swap");
 		return;
 	}
 
@@ -43,7 +43,7 @@ void _add(stack_t **stack, unsigned int ln)
 
 	if (!stack || !*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", ln);
+		more_error(8, ln, "add");
 		return;
 	}
 
@@ -68,7 +68,7 @@ void _sub(stack_t **stack, unsigned int ln)
 
 	if (!stack || !*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", ln);
+		more_error(8, ln, "sub");
 		return;
 	}
 
@@ -102,13 +102,13 @@ void _div(stack_t **stack, unsigned int ln)
 
 	if (!stack || !*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", ln);
+		more_error(8, ln, "div");
 		return;
 	}
 
 	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", ln);
+		more_error(9, ln);
 		return;
 	}
 

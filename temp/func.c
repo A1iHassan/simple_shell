@@ -1,13 +1,50 @@
 #include "monty.h"
 
+/**
+ * _open - open file
+ * @file: the file namepath
+ * Return: void
+ */
+
+void _open(char *file)
+{
+	FILE *dn = fopen(file, "r");
+
+	if (file == NULL || dn == NULL)
+		_error(2, file);
+	_read(dn);
+	fclose(dn);
+}
+
+
+/**
+ * read_file - reads a file
+ * @dn: pointer to file descriptor
+ * Return: void
+ */
+
+void _read(FILE *dn)
+{
+	int ln, format = 0;
+	char *buffer = NULL;
+	size_t len = 0;
+
+	for (ln = 1; getline(&buffer, &len, dn) != -1; ln++)
+	{
+		format = _parse(buffer, ln, format);
+	}
+	free(buffer);
+}
+
+
+
 int _parse(char *buff, int ln, int ft)
 {
-	char *opcode;
-	char *value;
+	char *opcode, *value;
 	const char *delim = "\n ";
 
 	if (buff == NULL)
-		fprintf(stderr, "Error: malloc failed\n");
+		_error(4);
 
 	opcode = strtok(buff, delim);
 	if (opcode == NULL)
@@ -60,7 +97,7 @@ void func_d(char *opcode, char *value, int ln, int ft)
 		}
 	}
 	if (sign == 1)
-		fprintf(stderr, "L%d: unknown instruction %s\n", ln, opcode);
+		_error(3, ln, opcode);
 }
 
 void c_func(op_func func, char *op, char *val, int ln, int ft)
@@ -82,7 +119,7 @@ void c_func(op_func func, char *op, char *val, int ln, int ft)
 		for (i = 0; val[i] != '\0'; i++)
 		{
 			if (isdigit(val[i]) == 0)
-				fprintf(stderr, "L%d: usage: push integer\n", ln);
+				_error(5, ln);
 		}
 		node = made_node(atoi(val) * flag);
 		if (ft == 0)
@@ -91,30 +128,5 @@ void c_func(op_func func, char *op, char *val, int ln, int ft)
 			put_queue(&node, ln);
 	}
 	else
-		func(&top, ln);
-}
-
-/**
- * _rotr - rotate the stack to the bottom
- * @stack: the stack
- * @ln: line number
- */
-void _rotr(stack_t **stack, __attribute__((unused)) unsigned int ln)
-{
-	stack_t *current_node;
-
-	if (!stack || !*stack || !(*stack)->next)
-		return;
-
-	current_node = *stack;
-
-	while (current_node->next != NULL)
-		current_node = current_node->next;
-
-	current_node->next = *stack;
-	current_node->prev->next = NULL;
-	current_node->prev = NULL;
-
-	(*stack)->prev = current_node;
-	*stack = current_node;
+		func(&head, ln);
 }

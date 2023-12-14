@@ -12,7 +12,7 @@ void _mul(stack_t **stack, unsigned int ln)
 
 	if (!stack || !*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't mul, stack too short\n", ln);
+		more_error(8, ln, "mul");
 		return;
 	}
 
@@ -36,13 +36,13 @@ void _mod(stack_t **stack, unsigned int ln)
 
 	if (!stack || !*stack || !(*stack)->next)
 	{
-		fprintf(stderr, "L%d: can't mod, stack too short\n", ln);
+		more_error(8, ln, "mod");
 		return;
 	}
 
 	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", ln);
+		more_error(9, ln);
 		return;
 	}
 
@@ -65,7 +65,7 @@ void _pchar(stack_t **stack, unsigned int ln)
 
 	if (!stack || !*stack)
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", ln);
+		str_error(11, ln);
 		return;
 	}
 
@@ -73,7 +73,7 @@ void _pchar(stack_t **stack, unsigned int ln)
 
 	if (character_code < 0 || character_code > 127)
 	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", ln);
+		str_error(10, ln);
 		return;
 	}
 
