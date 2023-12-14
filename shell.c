@@ -27,7 +27,7 @@ int main(int argc, char **argv, char **envp)
 			if (isatty(0))
 				_print("\n");
 			break; }
-		if (count(line) == 0)
+		if (count(line) == 0 || line[0] == '#')
 			continue;
 		i = 0;
 		while (line[i])
@@ -41,24 +41,13 @@ int main(int argc, char **argv, char **envp)
 				line[i] = '\0';
 				break; }
 			i++; }
-			i = 0;
-		temp = line;
-		printf("%s\n", temp);
-		token = strtok(temp, ";");
-		while (token)
-		{
-			printf("%s\n", token);
-			i += _strlen(token);
-			temp += i + 1;
-			if (_strlen(token) == 0 || _echo(token, stptr) == 1)
-			{
-					continue; }
-			if (built_in(token, stptr) == 1 || comp_built(token, stptr) == 1)
-			{
-					continue; }
-			if (more_built(token, envp, stptr) == 1)
-			{
-					continue; }
-			token = strtok(temp, ";"); } }
+
+
+		if (_strlen(line) == 0 || _echo(line, stptr) == 1)
+			continue;
+		if (built_in(line, stptr) == 1 || comp_built(line, stptr) == 1)
+			continue;
+		if (more_built(line, envp, stptr) == 1)
+			continue; }
 	free(line);
 	return (0); }
