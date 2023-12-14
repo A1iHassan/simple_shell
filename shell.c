@@ -10,7 +10,7 @@
 
 int main(int argc, char **argv, char **envp)
 {
-	char *line = NULL;
+	char *line = NULL, *token = NULL, *temp;
 	size_t n = 0;
 	ssize_t charac;
 	int i, status = 0, *stptr = &status;
@@ -41,11 +41,24 @@ int main(int argc, char **argv, char **envp)
 				line[i] = '\0';
 				break; }
 			i++; }
-		if (_strlen(line) == 0 || _echo(line, stptr) == 1)
-			continue;
-		if (built_in(line, stptr) == 1 || comp_built(line, stptr) == 1)
-			continue;
-		if (more_built(line, envp, stptr) == 1)
-			continue; }
+			i = 0;
+		temp = line;
+		printf("%s\n", temp);
+		token = strtok(temp, ";");
+		while (token)
+		{
+			printf("%s\n", token);
+			i += _strlen(token);
+			temp += i + 1;
+			if (_strlen(token) == 0 || _echo(token, stptr) == 1)
+			{
+					continue; }
+			if (built_in(token, stptr) == 1 || comp_built(token, stptr) == 1)
+			{
+					continue; }
+			if (more_built(token, envp, stptr) == 1)
+			{
+					continue; }
+			token = strtok(temp, ";"); } }
 	free(line);
 	return (0); }

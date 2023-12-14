@@ -40,4 +40,5 @@ size_t _strlen_(char **s);
 char *_hash(char *line);
 void _free(char **grid, int height);
 int _echo(char *line, int *status);
+char *_strchr(char *s, char c);
 #endif
